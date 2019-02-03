@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "942684773308",
+    "firebase_url": "https://alarmsys-4c2f7.firebaseio.com",
+    "project_id": "alarmsys-4c2f7",
+    "storage_bucket": "alarmsys-4c2f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942684773308:android:dfbe63dcf25e7c25",
+        "android_client_info": {
+          "package_name": "com.example.cayo.alarmsys"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942684773308-v8cmtkqhas378jcbk0322cqbr01eerjv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cayo.alarmsys",
+            "certificate_hash": "e5ac72087c17505777c87a9cf5741b498473559e"
+          }
+        },
+        {
+          "client_id": "942684773308-div9vkiu3rk8ufs577o6k0h7dvaf6np5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHoJgQWXF2tsnNrkChUAwERECbSgS9n20"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942684773308-div9vkiu3rk8ufs577o6k0h7dvaf6np5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942684773308:android:e808a5d6377e08fe",
+        "android_client_info": {
+          "package_name": "com.example.cayo.alarmsysmovel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942684773308-489dhss2pg3fv4eko72aujjd9c6pke0a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cayo.alarmsysmovel",
+            "certificate_hash": "e5ac72087c17505777c87a9cf5741b498473559e"
+          }
+        },
+        {
+          "client_id": "942684773308-div9vkiu3rk8ufs577o6k0h7dvaf6np5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHoJgQWXF2tsnNrkChUAwERECbSgS9n20"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942684773308-div9vkiu3rk8ufs577o6k0h7dvaf6np5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942684773308:android:002d64c4c8dfda01",
+        "android_client_info": {
+          "package_name": "com.example.cayo.seam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942684773308-div9vkiu3rk8ufs577o6k0h7dvaf6np5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHoJgQWXF2tsnNrkChUAwERECbSgS9n20"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
