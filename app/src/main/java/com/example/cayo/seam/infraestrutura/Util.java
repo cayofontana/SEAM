@@ -1,5 +1,6 @@
 package com.example.cayo.seam.infraestrutura;
 
+import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -7,15 +8,17 @@ import android.app.TaskStackBuilder;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.cayo.seam.MainActivity;
@@ -86,44 +89,65 @@ public class Util
         gerenteNotificacao.notify(NOTIFICATION_ID++, construtor.build());
     }
 
-    public static void exibirPopup(final ClipboardManager gerenteClipboard, Context contexto, final String titulo, final String mensagem)
+    public static void exibirDialogo(final ClipboardManager gerenteClipboard, Context contexto, final String mensagem)
     {
         AlertDialog.Builder dialogo = new AlertDialog.Builder(contexto);
-        dialogo.setTitle(titulo);
         dialogo.setIcon(R.drawable.common_google_signin_btn_text_light_normal_background);
 
+        ViewGroup elementosVisao = ((Activity) contexto).findViewById(android.R.id.content);
 
-        final Animation in = new AlphaAnimation(0.0f, 1.0f);
-        in.setDuration(3000);
+        View dialogoVisao = LayoutInflater.from(contexto).inflate(R.layout.dialogo, elementosVisao, false);
+        final TextView tvwMensagemCopiado = (TextView) dialogoVisao.findViewById(R.id.tvwMensagemCopiado);
 
-        final Animation out = new AlphaAnimation(1.0f, 0.0f);
-        out.setDuration(3000);
+        final Animation animacaoInicial = new AlphaAnimation(0.0f, 1.0f);
+        animacaoInicial.setDuration(3000);
+        final Animation animacaoFinal = new AlphaAnimation(1.0f, 0.0f);
+        animacaoFinal.setDuration(3000);
 
-        final TextView caixaTexto = new TextView(contexto);
-        caixaTexto.setText(mensagem);
-        caixaTexto.setOnClickListener(new View.OnClickListener()
+        animacaoFinal.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationStart(Animation arg0) {
+                tvwMensagemCopiado.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+            }
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                tvwMensagemCopiado.setVisibility(View.INVISIBLE);
+            }
+        });
+        final TextView tvwToken = (TextView) dialogoVisao.findViewById(R.id.tvwToken);
+        tvwToken.setText(mensagem);
+        tvwToken.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 AnimationSet as = new AnimationSet(true);
-                as.addAnimation(out);
-                in.setStartOffset(3000);
-                as.addAnimation(in);
-                caixaTexto.startAnimation(out);
+                as.addAnimation(animacaoFinal);
+                animacaoInicial.setStartOffset(2000);
+                as.addAnimation(animacaoInicial);
+                tvwToken.startAnimation(animacaoFinal);
 
-                ClipData clip = ClipData.newPlainText("label", caixaTexto.getText().toString());
+                ClipData clip = ClipData.newPlainText("token", tvwToken.getText().toString());
                 gerenteClipboard.setPrimaryClip(clip);
             }
         });
 
-        dialogo.setView(caixaTexto);
-        dialogo.setPositiveButton("Fechar", new DialogInterface.OnClickListener()
-        {
-            public void onClick(DialogInterface dialoginterface, int i)
-            {
-                dialoginterface.dismiss();
+        AlertDialog.Builder builder = new AlertDialog.Builder(contexto);
+        builder.setCancelable(false);
+        builder.setView(dialogoVisao);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        Button btnFechar = (Button) dialogoVisao.findViewById(R.id.btnFechar);
+        btnFechar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
             }
-        }).show();
+        });
     }
 }

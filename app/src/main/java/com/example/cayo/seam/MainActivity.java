@@ -1,27 +1,22 @@
 package com.example.cayo.seam;
 
 import android.content.BroadcastReceiver;
-import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.cayo.seam.infraestrutura.Util;
 import com.example.cayo.seam.servico.NotificacaoServico;
+
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.List;
@@ -29,6 +24,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
 {
     private ListView lvwNotificacoes;
+    private LinearLayout painelListaVazia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,6 +33,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         lvwNotificacoes = (ListView) findViewById(R.id.lvwNotificacoes);
+        painelListaVazia = (LinearLayout) findViewById(R.id.painelListaVazia);
+
         exibirNotificacoes();
 
         if (getIntent().getExtras() != null && getIntent().getExtras().containsKey("seam"))
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId())
         {
             case R.id.token:
-                Util.exibirPopup((ClipboardManager) getSystemService(CLIPBOARD_SERVICE), this, "Token (ID)", FirebaseInstanceId.getInstance().getToken());
+                Util.exibirDialogo((ClipboardManager) getSystemService(CLIPBOARD_SERVICE), this, FirebaseInstanceId.getInstance().getToken());
                 return (true);
             default:
                 return (super.onOptionsItemSelected(item));
@@ -81,8 +79,17 @@ public class MainActivity extends AppCompatActivity
 
     private void exibirNotificacoes()
     {
+        painelListaVazia.setVisibility(View.INVISIBLE);
+        lvwNotificacoes.setVisibility(View.INVISIBLE);
+
         List<NotificacaoVisao> notificacoesVisao = NotificacaoVisao.listar(this);
-        lvwNotificacoes.setAdapter(new NotificacaoAdapter(this, notificacoesVisao));
+
+        if (notificacoesVisao.isEmpty())
+            painelListaVazia.setVisibility(View.VISIBLE);
+        else {
+            lvwNotificacoes.setVisibility(View.VISIBLE);
+            lvwNotificacoes.setAdapter(new NotificacaoAdapter(this, notificacoesVisao));
+        }
     }
 
     private class MainActivityReceiver extends BroadcastReceiver

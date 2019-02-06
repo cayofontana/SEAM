@@ -91,7 +91,7 @@ public class NotificacaoVisao
         List<NotificacaoVisao> notificacoesVisao = new ArrayList<NotificacaoVisao>();
 
         for (Notificacao notificacao : Notificacao.listar(contexto))
-            notificacoesVisao.add(new NotificacaoVisao(notificacao,"Evento " + notificacao.getId() + ": Possível Invasão", "Sensores notificaram presença de objeto em ", Util.alterarFormatoData(notificacao.getData(), "dd/MM/yyyy hh:mm:ss"), 1));
+            notificacoesVisao.add(new NotificacaoVisao(notificacao,"Notificação " + notificacao.getId() + ": Possível Invasão", "Sensores identificaram a presença de objeto em ", Util.alterarFormatoData(notificacao.getData(), "dd/MM/yyyy hh:mm:ss"), 1));
 
         return (notificacoesVisao);
     }

@@ -7,6 +7,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout android:id="@+id/painelListaVazia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/icone"
+            android:src="@drawable/ic_informacao"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nenhuma notificação encontrada."
+            android:textSize="10pt"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
     <ListView
         android:id="@+id/lvwNotificacoes"
         android:layout_width="match_parent"

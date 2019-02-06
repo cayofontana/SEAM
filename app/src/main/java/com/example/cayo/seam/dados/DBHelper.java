@@ -7,7 +7,7 @@ import com.example.cayo.seam.dados.NotificacaoContrato.NotificacaoVerbete;
 
 public class DBHelper extends SQLiteOpenHelper
 {
-    public static final int VERSAO_DATABASE = 2;
+    public static final int VERSAO_DATABASE = 3;
     public static final String NOME_DATABASE = "SEAM.db";
 
     private static final String SQL_CRIAR_TABELAS =
