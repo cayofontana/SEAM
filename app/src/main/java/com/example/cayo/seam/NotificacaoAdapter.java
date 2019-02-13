@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cayo.seam.infraestrutura.Util;
+
 import java.util.List;
 
 public class NotificacaoAdapter extends ArrayAdapter<NotificacaoVisao>
@@ -54,6 +56,7 @@ public class NotificacaoAdapter extends ArrayAdapter<NotificacaoVisao>
                 notificacaoVisao.atualizar(contexto);
                 int color = Color.argb(255, 48, 48, 48);
                 v.setBackgroundColor(color);
+                Util.cancelarNotificacao(contexto);
             }
         });
 
