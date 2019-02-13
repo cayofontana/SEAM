@@ -30,6 +30,8 @@ import java.util.Date;
 
 public class Util
 {
+    private static int NOTIFICATION_ID = 234;
+
     private Util() {}
 
     public static String alterarFormatoData(String strData, String formato)
@@ -52,8 +54,6 @@ public class Util
 
     public static void notificar(Context contexto, String titulo, String mensagem)
     {
-        int NOTIFICATION_ID = 234;
-
         NotificationManager gerenteNotificacao = (NotificationManager) contexto.getSystemService(Context.NOTIFICATION_SERVICE);
 
         String CHANNEL_ID = "seam_01";
@@ -86,7 +86,14 @@ public class Util
 
         construtor.setContentIntent(resultPendingIntent);
 
-        gerenteNotificacao.notify(NOTIFICATION_ID++, construtor.build());
+        gerenteNotificacao.notify(++NOTIFICATION_ID, construtor.build());
+    }
+
+    public static void cancelarNotificacao(Context contexto)
+    {
+        String servicoNotificacao = Context.NOTIFICATION_SERVICE;
+        NotificationManager gerenteNotificacao = (NotificationManager) contexto.getSystemService(servicoNotificacao);
+        gerenteNotificacao.cancel(NOTIFICATION_ID);
     }
 
     public static void exibirDialogo(final ClipboardManager gerenteClipboard, Context contexto, final String mensagem)
