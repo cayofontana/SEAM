@@ -7,8 +7,8 @@ import com.example.cayo.seam.dados.NotificacaoContrato.NotificacaoVerbete;
 
 public class DBHelper extends SQLiteOpenHelper
 {
-    public static final int VERSAO_DATABASE = 3;
-    public static final String NOME_DATABASE = "SEAM.db";
+    private static final int VERSAO_DATABASE = 5;
+    private static final String NOME_DATABASE = "SEAM.db";
 
     private static final String SQL_CRIAR_TABELAS =
             "CREATE TABLE " + NotificacaoVerbete.TABELA +
@@ -22,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper
     private static final String SQL_REMOVER_TABELAS =
             "DROP TABLE IF EXISTS " + NotificacaoVerbete.TABELA;
 
-    public DBHelper(Context contexto)
+    DBHelper(Context contexto)
     {
         super(contexto, NOME_DATABASE, null, VERSAO_DATABASE);
     }
