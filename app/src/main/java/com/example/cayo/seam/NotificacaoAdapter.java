@@ -56,7 +56,7 @@ public class NotificacaoAdapter extends ArrayAdapter<NotificacaoVisao>
                 notificacaoVisao.atualizar(contexto);
                 int color = Color.argb(255, 48, 48, 48);
                 v.setBackgroundColor(color);
-                Util.cancelarNotificacao(contexto);
+                Util.cancelarNotificacao(contexto, (int) notificacaoVisao.getNotificacao().getId());
             }
         });
 

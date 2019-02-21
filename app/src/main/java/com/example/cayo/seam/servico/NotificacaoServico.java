@@ -56,6 +56,6 @@ public class NotificacaoServico extends FirebaseMessagingService {
         intent.setAction(".MainActivity");
         sendBroadcast(intent);
 
-        Util.notificar(contexto, "SEAM " + String.valueOf(notificacao.getId()), "Alerta em " + notificacao.getData());
+        Util.notificar(contexto, (int) notificacao.getId(), "SEAM " + String.valueOf(notificacao.getId()), "Alerta em " + notificacao.getData());
     }
 }
