@@ -43,7 +43,7 @@ public class NotificacaoAdapter extends ArrayAdapter<NotificacaoVisao>
 
         if (!notificacaoVisao.estaVisualizada())
         {
-            int color = Color.argb(127, 63, 255, 63);
+            int color = Color.argb(192, 255, 0, 0);
             linhavisao.setBackgroundColor(color);
         }
 
